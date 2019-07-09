@@ -5,67 +5,48 @@
  import React from 'react';
  import ReactDOM from 'react-dom';
 
-function UserGreeting(props){
-	return <h1>Welcome back!</h1>
-}
-function GuestGreeting(props){
-	return <h1>Please sign up.</h1>
-}
-function Greeting(props){
-	const isLoggedIn=props.isLoggedIn;
-	if(isLoggedIn){
-		return <UserGreeting/>
+
+ function WarningBanner(props) {
+	if (!props.warn) {
+	  return null;
 	}
-	return <GuestGreeting/>
-}
-function LoginButton(props){
-	return(
-		<button onClick={props.onClick}>
-			Login
-		</button>
+  
+	return (
+	  <div className="warning">
+		Warning!
+	  </div>
 	);
-}
-function LogoutButton(props){
-	return(
-		<button onClick={props.onClick}>
-			Logout
-		</button>
-	)
-}
-class LoginControl extends React.Component{
-	constructor(props){
-		super(props);
-		this.handleLoginClick=this.handleLoginClick.bind(this);
-		this.handleLoginOutClick=this.handleLoginOutClick.bind(this);
-		this.state={isLoggedIn:false};
+  }
+  
+  class Page extends React.Component {
+	constructor(props) {
+	  super(props);
+	  this.state = {showWarning: true};
+	  this.handleToggleClick = this.handleToggleClick.bind(this);
 	}
-	handleLoginClick(){
-		this.setState({isLoggedIn:true});
+  
+	handleToggleClick() {
+	  this.setState(state => ({
+		showWarning: !state.showWarning
+	  }));
 	}
-	handleLoginOutClick(){
-		this.setState({isLoggedIn:false});
+  
+	render() {
+	  return (
+		<div>
+		  <WarningBanner warn={this.state.showWarning} />
+		  <button onClick={this.handleToggleClick}>
+			{this.state.showWarning ? 'Hide' : 'Show'}
+		  </button>
+		</div>
+	  );
 	}
-	render(){
-		const isLoggedIn=this.state.isLoggedIn;
-		let button;
-		if(isLoggedIn){
-			button=<LoginButton onClick={this.handleLoginOutClick}/>
-		}
-		else{
-			button=<LoginButton onClick={this.handleLoginClick}/>
-		}
-		return(
-			<div>
-				<Greeting isLoggedIn={isLoggedIn}/>
-				{button}
-			</div>
-		)
-	}
-}
+  }
+  
   ReactDOM.render(
-	<LoginControl/>,
+	<Page />,
 	document.getElementById('root')
-	);
+  );
   
 //  function Comment(props){
 // 	 return(
