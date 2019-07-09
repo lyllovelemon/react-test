@@ -2,7 +2,15 @@ body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
 }
-
+button{
+    background: skyblue;
+    color: #fff;
+    font-size: 14px;
+    border: 0 none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 ol, ul {
     padding-left: 30px;
 }
