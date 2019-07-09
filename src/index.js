@@ -5,14 +5,20 @@
  import React from 'react';
  import ReactDOM from 'react-dom';
 
- class Welcome extends React.Component{
-	 render(){
-		 return <h1>Hello,{this.props.name}</h1>
-	 }
+ function Welcome(props){
+	 return <h1>Hello,{props.name}</h1>
  }
- const element=<Welcome name="Sara"/>
+ function App(){
+	 return(
+		 <div>
+			 <Welcome name="Sara"/>
+			 <Welcome name="lemon"/>
+			 <Welcome name="Edite"/>
+		 </div>
+	 )
+ }
  ReactDOM.render(
-	 element,
+	 <App />,
 	 document.getElementById("root")
  )
 // import './index.css';
