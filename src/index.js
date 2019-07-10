@@ -1,22 +1,36 @@
  import React from 'react';
  import ReactDOM from 'react-dom';
 
-
-
-function NumberList(props){
-	const numbers=props.numbers;
-	const listNumbers=numbers.map((number)=>
-		<li key={number.toString()}>
-		{number}
-		</li>
+function Blog(props){
+	const sidebar=(
+		<ul>
+			{props.posts.map((post)=>
+				<li key={post.id}>
+					{post.title}
+				</li>
+				)}
+		</ul>
+	);
+	const content=props.posts.map((post)=>
+		<div key={post.id}>
+			<h3>{post.title}</h3>
+			<p>{post.content}</p>	
+		</div>
 	);
 	return(
-		<ul>{listNumbers}</ul>
+		<div>
+			{sidebar}
+			<hr/>
+			{content}
+		</div>
 	)
 }
-const numbers=[1,2,3,4,5,6];
+const posts=[
+	{id:1,title:'hello lemon',content:'welcome to lemon`s world'},
+	{id:2,title:'Ins',content:'there are many ins'}
+]
 ReactDOM.render(
-	<NumberList numbers={numbers}/>,
+	<Blog posts={posts}/>,
 	document.getElementById('root')
 )
 //  function Comment(props){
