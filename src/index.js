@@ -1,12 +1,10 @@
  import React from 'react';
  import ReactDOM from 'react-dom';
 
-class EssayForm extends React.Component{
+class FlavorForm extends React.Component{
 	constructor(props){
 		super(props);
-		this.state={
-			value:''
-		};
+		this.state={value:'coconut'};
 		this.handleChange=this.handleChange.bind(this);
 		this.handleSubmit=this.handleSubmit.bind(this);
 	}
@@ -14,23 +12,28 @@ class EssayForm extends React.Component{
 		this.setState({value:event.target.value})
 	}
 	handleSubmit(event){
-		alert('提交的文章'+this.state.value);
+		alert("你喜欢的风味是"+this.state.value);
 		event.preventDefault();
 	}
 	render(){
 		return(
 			<form onSubmit={this.handleSubmit}>
 				<label>
-					文章:
-					<textarea value={this.state.value} onChange={this.handleChange}/>
+					选择你喜欢的风味:
+					<select value={this.state.value} onChange={this.handleChange}>
+						<option value="grapefruit">葡萄柚</option>
+						<option value="lime">柠檬</option>
+						<option value="coconut">椰子</option>
+						<option value="mango">芒果</option>	
+					</select>
 				</label>
-				<input type='submit' value="提交"/>
+				<input type="submit" value="提交"/>
 			</form>
 		)
 	}
 }
 ReactDOM.render(
-	<EssayForm/>,
+	<FlavorForm/>,
 	document.getElementById('root')
 )
 //  function Comment(props){
