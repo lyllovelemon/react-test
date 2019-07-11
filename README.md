@@ -1,4 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 深入理解React
+
+1. 理解React的工作原理
+
+2. JSX的优势与局限
+
+3. 使用props还是state
+
+4. React组件的生命周期
+
+5. 为什么尽量构造无状态组件
+
+6. 创建高阶组件
+
+7. 组件之间通讯
 
 ## Available Scripts
 
